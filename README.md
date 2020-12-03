@@ -1,1 +1,1 @@
-# <img src="https://latex.codecogs.com/svg.latex?\Large&space;{hlf^3}" title="hlf-kubed" />
+# <img src="https://latex.codecogs.com/svg.latex?\Huge&space;{\mathbb{HLF}^\mathbf{3}}" title="hlf-kubed" />
