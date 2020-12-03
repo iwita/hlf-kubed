@@ -1,1 +1,1 @@
-# hlf-kubed
+# $hlf^3$
