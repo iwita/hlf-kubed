@@ -1,7 +1,7 @@
 # Sample Chaincode in Go
 
 ## Some info first:
-Source: https://developer.ibm.com/recipes/tutorials/writing-hyperledger-fabric-chaincode-using-go-programming-language/
+Great source: https://www.ibm.com/developerworks/cloud/library/cl-ibm-blockchain-chaincode-development-using-golang/cl-ibm-blockchain-chaincode-development-using-golang-pdf.pdf
 
 - Chaincode needs to be installed on each endorsing peer node that runs on a secured Docker
 - Chaincode in Hyperledger Fabric is similar to smart contracts
