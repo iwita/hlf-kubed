@@ -22,8 +22,9 @@ data:
         # any other exit code will indicate that the buildpack should not be applied.
 
         CHAINCODE_METADATA_DIR="$2"
-
-        set -euo pipefail
+        #echo "CHAINCODE_SOURCE_DIR=" $CHAINCODE_SOURCE_DIR
+        #echo "CHAINCODE_METADATA_DIR=" $CHAINCODE_METADATA_DIR
+        set -eu pipefail
 
         # use jq to extract the chaincode type from metadata.json and exit with
         # success if the chaincode type is golang
@@ -52,7 +53,7 @@ data:
         CHAINCODE_METADATA_DIR="$2"
         BUILD_OUTPUT_DIR="$3"
 
-        set -euo pipefail
+        set -eu pipefail
 
         #external chaincodes expect connection.json file in the chaincode package
         if [ ! -f "$CHAINCODE_SOURCE_DIR/connection.json" ]; then
@@ -82,10 +83,14 @@ data:
         # populated by the build program and should be treated as read only input. 
         # RELEASE_OUTPUT_DIR is the directory where release must place artifacts to be consumed by the peer.
 
-        set -euo pipefail
+        set -eu pipefail
 
         BUILD_OUTPUT_DIR="$1"
         RELEASE_OUTPUT_DIR="$2"
+        echo "RELEASE_OUTPUT_DIR" $RELEASE_OUTPUT_DIR 1>&2
+        echo "RELEASE_OUTPUT_DIR" $RELEASE_OUTPUT_DIR
+        echo "BUILD_OUTPUT_DIR" $BUILD_OUTPUT_DIR 1>&2
+        echo "BUILD_OUTPUT_DIR" $BUILD_OUTPUT_DIR
 
         # copy indexes from metadata/* to the output directory
         # if [ -d "$BUILD_OUTPUT_DIR/metadata" ] ; then
