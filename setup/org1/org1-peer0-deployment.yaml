@@ -82,9 +82,9 @@ spec:
             - mountPath: /builders/external/bin/build
               name: external-builder-build
               subPath: build
-            # - mountPath: /builders/external/bin/release
-            #   name: external-builder-release
-            #   subPath: release
+            - mountPath: /builders/external/bin/release
+              name: external-builder-release
+              subPath: release
       restartPolicy: Always
       volumes:
         - name: peer0-org1-claim1
@@ -119,12 +119,12 @@ spec:
               - key: build
                 path: build
                 mode: 0777
-        # - name: external-builder-release
-        #   configMap:
-        #     name: builders-config
-        #     items:
-        #       - key: release
-        #         path: release
-        #         mode: 0777
+        - name: external-builder-release
+          configMap:
+            name: builders-config
+            items:
+              - key: release
+                path: release
+                mode: 0777
       nodeSelector:
         kubernetes.io/hostname: raspberrypi-worker-01

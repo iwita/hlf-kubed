@@ -4,6 +4,11 @@ import (
 	"github.com/hyperledger/fabric-contract-api-go/contractapi"
 )
 
+type ServerConfig struct {
+	CCID    string
+	Address string
+}
+
 type SmartContract struct {
 	contractapi.Contract
 }
