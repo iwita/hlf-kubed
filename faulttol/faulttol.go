@@ -120,15 +120,15 @@ func (s *SmartContract) QueryDev(ctx contractapi.TransactionContextInterface, id
 	return dev, nil
 }
 
-func (s *SmartContract) UpdateDeviceUsedResources(ctx contractapi.TransactionContextInterface, id string, rss *Resources) error {
+func (s *SmartContract) UpdateDeviceUsedResources(ctx contractapi.TransactionContextInterface, id string, cpu, mem, bw float32) error {
 	dev, err := s.QueryDev(ctx, id)
 
 	if err != nil {
 		return err
 	}
-	dev.Used.CPU = rss.CPU
-	dev.Used.Memory = rss.Memory
-	dev.Used.NetBw = rss.NetBw
+	dev.Used.CPU = cpu
+	dev.Used.Memory = mem
+	dev.Used.NetBw = bw
 	devAsBytes, _ := json.Marshal(dev)
 
 	return ctx.GetStub().PutState(id, devAsBytes)
