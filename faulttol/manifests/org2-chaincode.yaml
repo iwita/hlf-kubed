@@ -3,28 +3,28 @@
 apiVersion: apps/v1 # for versions before 1.8.0 use apps/v1beta1
 kind: Deployment
 metadata:
-  name: chaincode-faulttol-org1
+  name: chaincode-faulttol-org2
   namespace: hyperledger
   labels:
-    app: chaincode-faulttol-org1
+    app: chaincode-faulttol-org2
 spec:
   selector:
     matchLabels:
-      app: chaincode-faulttol-org1
+      app: chaincode-faulttol-org2
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: chaincode-faulttol-org1
+        app: chaincode-faulttol-org2
     spec:
       containers:
         - image: iwita/chaincode:faulttol
-          name: chaincode-faulttol-org1
+          name: chaincode-faulttol-org2
           imagePullPolicy: Always
           env:
             - name: CHAINCODE_CCID
-              value: "fabcar:005c35f4f172c056723eca09d41e8048e0beaa2712d920c19af837640df7e2aa"
+              value: "faulttol:f6d4bcb6c8d19ab8ca1ebd27ff494f9d953171b85cbd8479f212ec6a904c08eb"
             - name: CHAINCODE_ADDRESS
               value: "0.0.0.0:7052"
           ports:
@@ -35,14 +35,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: chaincode-faulttol-org1
+  name: chaincode-faulttol-org2
   namespace: hyperledger
   labels:
-    app: chaincode-faulttol-org1
+    app: chaincode-faulttol-org2
 spec:
   ports:
     - name: grpc
       port: 7052
       targetPort: 7052
   selector:
-    app: chaincode-faulttol-org1
+    app: chaincode-faulttol-org2
