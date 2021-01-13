@@ -45,10 +45,10 @@ func (s *SmartContract) InitLedger(ctx contractapi.TransactionContextInterface) 
 			Uuid: "123",
 			Org:  "org1",
 			Capacity: &Resources{
-				NetBw: 1, CPU: 4, Memory: 4,
+				CPU: 100, Memory: 1000,
 			},
 			Used: &Resources{
-				NetBw: 0, CPU: 0, Memory: 0,
+				CPU: 0, Memory: 0,
 			},
 		},
 		{
@@ -56,10 +56,10 @@ func (s *SmartContract) InitLedger(ctx contractapi.TransactionContextInterface) 
 			Uuid: "456",
 			Org:  "org2",
 			Capacity: &Resources{
-				NetBw: 1, CPU: 4, Memory: 4,
+				CPU: 100, Memory: 1000,
 			},
 			Used: &Resources{
-				NetBw: 0, CPU: 0, Memory: 0,
+				CPU: 0, Memory: 0,
 			},
 		},
 	}
