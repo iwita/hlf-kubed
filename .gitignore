@@ -7,3 +7,6 @@ setup/setup.sh
 setup/bin
 hyperledger-fabric-linux*gz
 fabric-external-chaincodes
+setup/config/configtx.yaml
+setup/channel-artifacts
+images
