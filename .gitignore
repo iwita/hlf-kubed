@@ -2,3 +2,8 @@ setup/.kube/*
 *pdf
 kubectl
 kubeconfig
+setup/setup.md
+setup/setup.sh
+setup/bin
+hyperledger-fabric-linux*gz
+fabric-external-chaincodes

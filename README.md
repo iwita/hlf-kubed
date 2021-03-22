@@ -1,7 +1,9 @@
 # <img src="img/hlf.png" width="100" height="100"> <img src="https://latex.codecogs.com/svg.latex?\Huge&space;{\mathbb{HLF}^\mathbf{3}}" title="hlf-kubed" />
 
 
-## Test network deployment
+## Hyperledger Fabric deployment on top of K3s on a respeberry Pi 4 cluster
+
+<!-- ## Test network deployment
 
 1. Clone the `hyperledger/fabric-samples` and install the binaries needed
 ```sh
@@ -60,4 +62,4 @@ peer lifecycle chaincode install basic.tar.gz
 In the `hyperldger/fabric-samples/fabcar` folder, there are:
 - Scripts to setup a network 
 - Instructions to run the chaincode in `hyperledger/fabric-samples/chaincodes/fabcar`
-- Insructions to test the chaincode running some Invoking operations from `hyperledger/fabric-samples/fabcar/`
+- Insructions to test the chaincode running some Invoking operations from `hyperledger/fabric-samples/fabcar/` -->
