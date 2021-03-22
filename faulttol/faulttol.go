@@ -20,7 +20,8 @@ type SmartContract struct {
 }
 
 type Resources struct {
-	NetBw  float32
+	NetBwIn  float32
+	NetBwOut  float32
 	CPU    float32
 	Memory float32
 }
@@ -42,24 +43,33 @@ func (s *SmartContract) InitLedger(ctx contractapi.TransactionContextInterface) 
 	devices := []Device{
 		{
 			Kind: "Edge",
-			Uuid: "123",
+			Uuid: "1234",
 			Org:  "org1",
 			Capacity: &Resources{
 				CPU: 100, Memory: 1000,
+				NetBwIn: 1000, 
+				NetBwOut:1000,
 			},
 			Used: &Resources{
 				CPU: 0, Memory: 0,
+				NetBwIn: 0,
+				NetBwOut: 0,
 			},
 		},
 		{
 			Kind: "Edge",
-			Uuid: "456",
+			Uuid: "5678",
 			Org:  "org2",
 			Capacity: &Resources{
-				CPU: 100, Memory: 1000,
+				CPU: 100, 
+				Memory: 1000, 
+				NetBwIn: 1000, 
+				NetBwOut:1000,
 			},
 			Used: &Resources{
 				CPU: 0, Memory: 0,
+				NetBwIn: 0,
+				NetBwOut: 0,
 			},
 		},
 	}
@@ -104,18 +114,18 @@ func (s *SmartContract) QueryAllDevices(ctx contractapi.TransactionContextInterf
 }
 
 func (s *SmartContract) QueryDev(ctx contractapi.TransactionContextInterface, id string) (*Device, error) {
-	carAsBytes, err := ctx.GetStub().GetState(id)
+	devAsBytes, err := ctx.GetStub().GetState(id)
 
 	if err != nil {
 		return nil, fmt.Errorf("Failed to read from world state. %s", err.Error())
 	}
 
-	if carAsBytes == nil {
+	if devAsBytes == nil {
 		return nil, fmt.Errorf("%s does not exist", id)
 	}
 
 	dev := new(Device)
-	_ = json.Unmarshal(carAsBytes, dev)
+	_ = json.Unmarshal(devAsBytes, dev)
 
 	return dev, nil
 }
@@ -128,7 +138,7 @@ func (s *SmartContract) UpdateDeviceUsedResources(ctx contractapi.TransactionCon
 	}
 	dev.Used.CPU = cpu
 	dev.Used.Memory = mem
-	dev.Used.NetBw = bw
+	dev.Used.NetBwIn = bw
 	devAsBytes, _ := json.Marshal(dev)
 
 	return ctx.GetStub().PutState(id, devAsBytes)
@@ -148,8 +158,9 @@ func (s *SmartContract) GetDeviceAvailableResources(ctx contractapi.TransactionC
 	_ = json.Unmarshal(devAsBytes, dev)
 	available := &Resources{}
 	available.CPU = dev.Capacity.CPU - dev.Used.CPU
-	available.NetBw = dev.Capacity.NetBw - dev.Used.NetBw
+	available.NetBwIn = dev.Capacity.NetBwIn - dev.Used.NetBwIn
 	available.Memory = dev.Capacity.Memory - dev.Used.Memory
+
 	return available, nil
 }
 

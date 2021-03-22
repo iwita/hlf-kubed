@@ -19,7 +19,7 @@ spec:
         app: chaincode-faulttol-org1
     spec:
       containers:
-        - image: iwita/chaincode:faulttol
+        - image: iwita/chaincode:faulttol-2
           name: chaincode-faulttol-org1
           imagePullPolicy: Always
           env:
