@@ -1,0 +1,13 @@
+setup/.kube/*
+*pdf
+kubectl
+kubeconfig
+setup/setup.md
+setup/setup.sh
+setup/bin
+hyperledger-fabric-linux*gz
+fabric-external-chaincodes
+setup/config/configtx.yaml
+setup/channel-artifacts
+images
+config
